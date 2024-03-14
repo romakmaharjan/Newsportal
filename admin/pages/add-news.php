@@ -41,18 +41,64 @@ if (!empty($_POST)) {
 
             if (empty($value)) {
                 $errors[$key] = 'This field is required';
-            }else {
+            } else {
                 $old[$key] = $value;
             }
-        }else{
+        } else {
             $old[$key] = $value;
         }
 
 
     }
+    if (!array_filter($errors)) {
+        $catId = $_POST['category_id'];
+        $createdBy = $_SESSION['user']['id'];
+        $title = $_POST['title'];
+        $slug = $_POST['slug'];
+        $summary = $_POST['summary'];
+        $description = $_POST['description'];
+        $metaTitle = $_POST['meta_title'];
+        $metaDescription = $_POST['meta_description'];
 
-    $create_at = date('Y-m-d H:i:s');
-    $category_id = $_POST['category_id'];
+        $image = "";
+        if (!empty($_FILES['image']['name'])) {
+            $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $imageName = md5(uniqid()) . ".$ext";
+            $tmpName = $_FILES['image']['tmp_name'];
+            $uploadPath = public_path("news/$imageName");
+            if (!move_uploaded_file($tmpName, $uploadPath)) {
+                die("File Upload Failed");
+            } else {
+                $image = $imageName;
+            }
+
+        }
+
+        $created_at = date('Y-m-d H:i:s');
+        $updated_at = date('Y-m-d H:i:s');
+
+        $insertSql = "INSERT INTO news (
+                  category_id,
+                  created_by,
+                  title, slug, summary, description, image, meta_title,
+                  meta_description,created_at, updated_at)
+                VALUES ('$catId', '$createdBy', '$title', '$slug', '$summary',
+                        '$description', '$image', '$metaTitle', '$metaDescription',
+                        '$created_at','$updated_at')";
+
+        if (mysqli_query($conn, $insertSql)) {
+            $_SESSION['success'] = "News added successfully";
+            header("Location:" . admin_url('show-news'));
+            exit();
+
+        } else {
+            $_SESSION['error'] = "News not added";
+            redirect_back();
+        }
+
+
+    }
+
 
 }
 
