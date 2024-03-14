@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+nav{
+    width: 100%;
+    background: blue;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    height: 40px;
+}
+
+nav ul li{
+    min-width: 100px;
+    text-align: center;
+    line-height: 40px;
+}

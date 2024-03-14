@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #efefef;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-main {
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+.main-box-section {
+  width: 80%;
+  margin: auto;
+}
+
+.header {
+  width: 100%;
+  background: #dbdfe3;
+  position: fixed;
+  height: 70px;
+  z-index: 300;
+}
+
+.top-container {
+  width: 95%;
+  height: 70px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-name {
+  width: 20%;
+  height: 50px;
+}
+
+.company-name h1 {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.top-menu {
+  width: 75%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-menu a {
+  padding: 10px;
+  background: red;
+  border: 1px solid red;
+  color: white;
+  font-family: sans-serif;
+  font-size: 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.header-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.aside {
+  width: 250px;
+  height: 100%;
+  background: #0c8bb9;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: -20px;
+  position: fixed;
+  top: 90px;
+}
+
+.aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aside a {
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.aside ul li {
+  height: 50px;
+  padding: 0 0 0 20px;
+  line-height: 50px;
+}
+
+.aside ul li:hover {
+  background: #02597a;
+}
+
+.main {
+  width: 82%;
+  min-height: 900px;
+  background: white;
+  border-radius: 20px;
+  position: absolute;
+  left: 260px;
+  top: 90px;
+}
+
+.profile {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.profile .image-box img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.form-group {
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  height: 35px;
+}
+
+.btn-success {
+  min-width: 150px;
+  text-align: center;
+  background: green;
+  color: white;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid green;
+}
+
+.success {
+  width: 100%;
+  height: 50px;
+  background: green;
+  color: white;
+  line-height: 40px;
+  padding-left: 20px;
+}
+
+.table {
+  width: 100%;
+}
+
+.table th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.arole_btn {
+  min-width: 80px;
+  background: green;
+  color: white;
+  text-align: center;
+  border: 1px solid green;
+}
+
+.urole_btn {
+  min-width: 80px;
+  background: #ffae00;
+  color: white;
+  text-align: center;
+  border: 1px solid #ffae00;
+}
+
+.btn-success {
+  padding: 10px;
+  height: 30px;
+  background: green;
+}
+
+.btn-danger {
+  padding: 10px;
+  height: 30px;
+  background: #f80011;
+  color: white;
+}
