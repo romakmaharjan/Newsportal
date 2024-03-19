@@ -62,7 +62,7 @@ if(isset($_GET['delete_id'])) {
                 <td><?= $row['created_at']; ?></td>
                 <td><?= $row['updated_at']; ?></td>
                 <td>
-                    <a class="btn btn-success" href="">Edit</a>
+                    <a class="btn btn-success" href="edit-news.php?id=<?= $row['nid']; ?>">Edit</a>
                     <a class="btn btn-danger" href="?delete_id=<?= $row['nid']; ?>">Delete</a>
                 </td>
             </tr>
