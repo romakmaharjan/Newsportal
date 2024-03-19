@@ -16,7 +16,7 @@ $newsResult = mysqli_query($conn, $sql);
         <?php } ?>
         <h1><?=$news['title']; ?></h1>
         <p><?=$news['summary'];?></p>
-        <a href="">Read More</a>
+        <a href="<?=base_url('news-details')?>">Read More</a>
         <span>Category: <?=$news['category_name']?></span>
         <span>Published by: <?=$news['name']?></span>
     </div>

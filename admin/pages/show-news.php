@@ -6,6 +6,27 @@ JOIN category ON category.cid=news.category_id
 JOIN users ON users.id=news.created_by";
 $result = mysqli_query($conn, $sql);
 
+// Check if the delete button is clicked
+if(isset($_GET['delete_id'])) {
+    // Get the ID of the news item to be deleted
+    $delete_id = $_GET['delete_id'];
+    
+    // Construct the delete query
+    $delete_query = "DELETE FROM news WHERE nid='$delete_id'";
+    
+    // Execute the delete query
+    $delete_result = mysqli_query($conn, $delete_query);
+    
+    if($delete_result) {
+        // Redirect back to the same page after deletion
+        $_SESSION['success'] = "Record deleted successfully";
+        redirect_back();
+    } else {
+        // Display error message if deletion fails
+        echo "Error deleting news item: " . mysqli_error($conn);
+    }
+}
+
 
 ?>
 <div class="container">
@@ -42,7 +63,7 @@ $result = mysqli_query($conn, $sql);
                 <td><?= $row['updated_at']; ?></td>
                 <td>
                     <a class="btn btn-success" href="">Edit</a>
-                    <a class="btn btn-danger" href="">Delete</a>
+                    <a class="btn btn-danger" href="?delete_id=<?= $row['nid']; ?>">Delete</a>
                 </td>
             </tr>
             <?php } ?>
