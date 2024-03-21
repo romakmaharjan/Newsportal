@@ -7,6 +7,7 @@ $news = mysqli_fetch_assoc($result);
 $errors = [
     'title' => '',
     'summary' => '',
+    'image' => '',
     // Add more fields if needed
 ];
 
@@ -23,12 +24,30 @@ if (!empty($_POST)) {
             $old[$key] = $value;
         }
     }
+     // Handle image upload
+    $image = $news['image']; // Default to existing image
+    if (!empty($_FILES['image']['name'])) {
+        $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        $imageName = md5(uniqid()) . ".$ext";
+        $tmpName = $_FILES['image']['tmp_name'];
+        $uploadPath = public_path("news/$imageName");
+        if (move_uploaded_file($tmpName, $uploadPath)) {
+            // Delete the previous image file
+            if (!empty($news['image'])) {
+                unlink(public_path("news/" . $news['image']));
+            }
+            // Update image filename in database
+            $image = $imageName;
+        } else {
+            $errors['image'] = "Failed to upload image";
+        }
+    }
 
     if (!array_filter($errors)) {
         $title = $_POST['title'];
         $summary = $_POST['summary'];
         // Update news item in the database
-        $update_sql = "UPDATE news SET title='$title', summary='$summary' WHERE nid='$id'";
+        $update_sql = "UPDATE news SET title='$title', summary='$summary', image='$image' WHERE nid='$id'";
         $update_result = mysqli_query($conn, $update_sql);
         if ($update_result) {
             $_SESSION['success'] = "News updated successfully";
@@ -44,7 +63,7 @@ if (!empty($_POST)) {
 <div class="container">
     <h1>Update News</h1>
     <?php message(); ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title:
                 <a style="color: red;"><?= $errors['title']; ?></a>
@@ -56,6 +75,17 @@ if (!empty($_POST)) {
                 <a style="color: red;"><?= $errors['summary']; ?></a>
             </label>
             <textarea class="form-control" id="summary" name="summary"><?= $news['summary']; ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image">
+            <?php if ($news['image']) { ?>
+            <p>Current Image:</p>
+            <img src="<?= public_url('news/' . $news['image']); ?>" alt="Current Image">
+            <?php } ?>
+            <?php if ($errors['image']) { ?>
+            <p style="color: red;"><?= $errors['image']; ?></p>
+            <?php } ?>
         </div>
         <!-- Add more fields for other attributes of news if needed -->
         <div class="form-group">
