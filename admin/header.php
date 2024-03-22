@@ -46,6 +46,8 @@
                     <li><a href="<?= admin_url('manage-category') ?>">Manage Category</a></li>
                     <li><a href="<?= admin_url('add-news') ?>">Add News</a></li>
                     <li><a href="<?= admin_url('show-news') ?>">Show News</a></li>
+                    <li><a href="<?= admin_url('add-gallery') ?>">Add Gallery</a></li>
+                    <li><a href="<?= admin_url('show-gallery') ?>">Show Gallery</a></li>
                 </ul>
             </div>
         </div>

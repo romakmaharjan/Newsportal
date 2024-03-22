@@ -39,3 +39,14 @@ CREATE TABLE news(
                      page_views int
 
 );
+
+CREATE TABLE gallery (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    description TEXT,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(cid),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
