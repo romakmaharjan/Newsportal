@@ -98,9 +98,9 @@ require_once "header.php";
                     <p><i class="fas fa-home me-3"></i> Kathmandu, 44006, Nepal</p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
-                        info@example.com
+                        romakmaharjan@gmail.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-phone me-3"></i> + 9849555922</p>
                     <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
                 </div>
                 <!-- Grid column -->

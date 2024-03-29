@@ -1,8 +1,13 @@
 <?php
-$sql="SELECT category.cid,category.name as category_name,users.id,users.name,
-news.* FROM news
-JOIN category ON category.cid=news.category_id
-JOIN users ON users.id=news.created_by ORDER BY news.nid DESC LIMIT 6";
+$sql = "SELECT category.cid, category.name as category_name, users.id, users.name,
+                news.*, COUNT(comments.id) AS comment_count
+        FROM news
+        JOIN category ON category.cid = news.category_id
+        JOIN users ON users.id = news.created_by
+        LEFT JOIN comments ON comments.news_id = news.nid
+        GROUP BY news.nid
+        ORDER BY news.nid DESC
+        LIMIT 6";
 $newsResult = mysqli_query($conn, $sql);
 
 ?>
@@ -67,6 +72,8 @@ $newsResult = mysqli_query($conn, $sql);
         <a href="<?= base_url('news-details.php?id=' . $news['nid']) ?>">Read More</a>
         <span>Category: <?=$news['category_name']?></span>
         <span>Published by: <?=$news['name']?></span>
+        <span>Comments: <?= $news['comment_count'] ?></span>
+
     </div>
     <?php } ?>
 </div>

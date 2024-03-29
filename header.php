@@ -28,7 +28,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-orange static-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="./img/romakLogo.png" alt="..." height="80" width="150px">
+                <!-- <img src="./img/romakLogo.png" alt="..." height="80" width="150px"> -->
+                <h3>Newsportal</h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

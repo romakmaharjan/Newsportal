@@ -1,3 +1,3 @@
 <h1>Page not found: <?=$title;?>
-<a href="/newswebsite">Goto home</a>
+    <a href="/ittrainingnepalcourse/newswebsite1/">Goto home</a>
 </h1>
